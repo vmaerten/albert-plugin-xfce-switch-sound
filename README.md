@@ -13,7 +13,7 @@ An [Albert](https://albertlauncher.github.io/) plugin to quickly switch audio ou
 
 ## Requirements
 
-- [Albert Launcher](https://albertlauncher.github.io/) v0.20+ with Python plugin support
+- [Albert Launcher](https://albertlauncher.github.io/) v0.26+ (uses Python interface 4.0)
 - PipeWire or PulseAudio
 - `pactl` command-line tool (usually included with PulseAudio/PipeWire)
 

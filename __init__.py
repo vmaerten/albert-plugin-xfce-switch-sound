@@ -18,7 +18,7 @@ from albert import (
     makeThemeIcon,
 )
 
-md_iid = "5.0"
+md_iid = "4.0"
 md_version = "1.0"
 md_name = "Switch Sound Output"
 md_description = "Switch audio output and move active streams"
