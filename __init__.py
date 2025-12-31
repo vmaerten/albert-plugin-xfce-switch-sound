@@ -18,13 +18,14 @@ from albert import (
     makeThemeIcon,
 )
 
-md_iid = "4.0"
+md_iid = "5.0"
 md_version = "1.0"
 md_name = "Switch Sound Output"
 md_description = "Switch audio output and move active streams"
 md_license = "MIT"
-md_url = "https://github.com/valentin/albert-plugin-xfce-switch-sound"
-md_authors = ["@valentin"]
+md_url = "https://github.com/vmaerten/albert-plugin-python-sound-switcher"
+md_authors = ["@vmaerten"]
+md_bin_dependencies = ["pactl"]
 
 # Cache for sinks data
 _cache = {"sinks": [], "default": "", "timestamp": 0}
