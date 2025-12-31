@@ -132,6 +132,9 @@ class Plugin(PluginInstance, TriggerQueryHandler):
         return "<output name>"
 
     def handleTriggerQuery(self, query: Query):
+        if not query.isValid:
+            return
+
         query_str = query.string.strip().lower()
 
         try:
@@ -159,6 +162,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
             )
             return
 
+        items = []
         for sink in sinks:
             sink_name = sink.get("name", "")
             description = sink.get("description", sink_name)
@@ -180,18 +184,20 @@ class Plugin(PluginInstance, TriggerQueryHandler):
             elif "usb" in sink_name.lower():
                 icon_name = "audio-headphones"
 
-            query.add(
-                StandardItem(
-                    id=f"switch-sound-{sink['id']}",
-                    text=text,
-                    subtext=sink_name,
-                    icon_factory=lambda icon=icon_name: makeThemeIcon(icon),
-                    actions=[
-                        Action(
-                            id="switch",
-                            text=f"Switch to {description}",
-                            callable=lambda s=sink_name: switch_to_sink(s),
-                        ),
-                    ],
-                )
-            )
+            items.append(StandardItem(
+                id=f"switch-sound-{sink['id']}",
+                text=text,
+                subtext=sink_name,
+                icon_factory=lambda icon=icon_name: makeThemeIcon(icon),
+                actions=[
+                    Action(
+                        id="switch",
+                        text=f"Switch to {description}",
+                        callable=lambda s=sink_name: switch_to_sink(s),
+                    ),
+                ],
+            ))
+
+        if query.isValid:
+            for item in items:
+                query.add(item)
