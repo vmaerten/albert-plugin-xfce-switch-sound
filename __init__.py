@@ -23,7 +23,7 @@ md_version = "1.0"
 md_name = "Switch Sound Output"
 md_description = "Switch audio output and move active streams"
 md_license = "MIT"
-md_url = "https://github.com/vmaerten/albert-plugin-python-sound-switcher"
+md_url = "https://github.com/vmaerten/albert-plugin-sound-switcher"
 md_authors = ["@vmaerten"]
 md_bin_dependencies = ["pactl"]
 
