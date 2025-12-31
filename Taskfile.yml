@@ -1,0 +1,26 @@
+version: "3"
+
+vars:
+  PLUGIN_NAME: switch-sound
+  PLUGIN_DIR: "{{.HOME}}/.local/share/albert/python/plugins/{{.PLUGIN_NAME}}"
+
+tasks:
+  install:
+    desc: Install the plugin (symlink to Albert plugins directory)
+    cmds:
+      - mkdir -p {{.HOME}}/.local/share/albert/python/plugins
+      - ln -sfn {{.ROOT_DIR}} {{.PLUGIN_DIR}}
+      - echo "Installed {{.PLUGIN_NAME}} → {{.PLUGIN_DIR}}"
+      - echo "Restart Albert and enable the plugin in Settings → Plugins → Python"
+
+  uninstall:
+    desc: Uninstall the plugin
+    cmds:
+      - rm -f {{.PLUGIN_DIR}}
+      - echo "Uninstalled {{.PLUGIN_NAME}}"
+
+  update:
+    desc: Update the plugin from git
+    cmds:
+      - git pull
+      - echo "Updated {{.PLUGIN_NAME}}"
